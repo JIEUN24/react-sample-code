@@ -4,6 +4,7 @@ import Main from '../pages/main'
 import Table from '../pages/table'
 import NotFound from '../pages/notFound'
 import Javascript from '../pages/javascript'
+import Chart from '../pages/chart'
 import ScrollToTop from '../components/ScrollToTop'
 
 const BaseLayout = () => {
@@ -14,6 +15,8 @@ const BaseLayout = () => {
         <Route path="/" exact element={<Main />} />
         <Route path="/table" exact element={<Table />} />
         <Route path="/js" exact element={<Javascript />} />
+        <Route path="/chart" exact element={<Chart />} />
+        <Route path="/chart/:kind" exact element={<Chart />} />
         <Route path="*" exact element={<NotFound />} />
       </Routes>
     </BrowserRouter>
