@@ -6,6 +6,7 @@ import NotFound from '../pages/notFound'
 import Javascript from '../pages/javascript'
 import Chart from '../pages/chart'
 import ScrollToTop from '../components/ScrollToTop'
+import Local from '../pages/localStorage'
 
 const BaseLayout = () => {
   return (
@@ -15,6 +16,7 @@ const BaseLayout = () => {
         <Route path="/" exact element={<Main />} />
         <Route path="/table" exact element={<Table />} />
         <Route path="/js" exact element={<Javascript />} />
+        <Route path="/local" exact element={<Local />} />
         <Route path="/chart" exact element={<Chart />} />
         <Route path="/chart/:kind" exact element={<Chart />} />
         <Route path="*" exact element={<NotFound />} />
