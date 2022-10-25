@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { useBeforeunload } from "react-beforeunload";
 
 const LocalStroage = () => {
-
-  useBeforeunload((event) => event.preventDefault());
+  const ref = useRef(null);
+  // useBeforeunload((event) => event.preventDefault());
 
   const [category, setCategory] = useState({})
   const [data, setData] = useState([
@@ -13,22 +13,32 @@ const LocalStroage = () => {
     { name: '매출3', amount: 0 },
   ])
   const [change, setChange] = useState({})
-  console.log('data', data)
-  console.log('change', change)
+  const [change1, setChange1] = useState([])
+
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target
-    setChange({ ...change, [name]: value })
+    setChange({ name: name, amount: value })
+    // setChange([...change, { name: name, amount: value }])
   }
 
-  const addCategory = (e) => {
-    const { value } = e.target;
-    setCategory({ ...category, name: value, amount: 0 })
+  const hello = () => {
+    // const a = change?.map((item) => { return { name: item, amount: } })
   }
 
-  const submitHandler = () => {
-    setData([...data, category])
-  }
+  console.log(change)
+  console.log('change1', change1)
+
+  // const addCategory = (e) => {
+  //   const { value } = e.target;
+  //   setCategory({ ...category, name: value, amount: 0 })
+  // }
+
+  // const submitHandler = () => {
+  //   setData([...data, category])
+  // }
+  // const click = () => {
+  // }
 
   return (
     <div>
@@ -36,14 +46,18 @@ const LocalStroage = () => {
         return (
           <InputBox>
             <p>{item.name}</p>
-            <input type='number' name={item.name} onChange={onChangeHandler} />
+            <input type='number' name={item.name} onChange={onChangeHandler} ref={ref} onBlur={() => {
+              setChange1([...change1, change])
+              // console.log(change)
+            }} />
           </InputBox>
         )
       })}
-      <p>카테고리 추가</p>
-      <input placeholder='카테고리 이름' onChange={addCategory} />
-      <button onClick={submitHandler}>제출</button>
-      {data.map((item, idx) => {
+      {/* <button onClick={click}>고</button> */}
+      {/* <p>카테고리 추가</p> */}
+      {/* <input placeholder='카테고리 이름' onChange={addCategory} />
+      <button onClick={submitHandler}>제출</button> */}
+      {/* {data.map((item, idx) => {
         return (
           <div>
             <p>{item.name}</p>
@@ -53,7 +67,7 @@ const LocalStroage = () => {
             }}>X</button>
           </div>
         )
-      })}
+      })} */}
     </div>
   )
 }
