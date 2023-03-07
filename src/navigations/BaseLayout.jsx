@@ -8,6 +8,8 @@ import Chart from "../pages/chart";
 import ScrollToTop from "../components/ScrollToTop";
 import Local from "../pages/localStorage";
 import Loading from "../pages/loading";
+import Login from "../pages/login";
+import RedirectURI from "../pages/loginRedirect/RedirectURI";
 
 const BaseLayout = () => {
   return (
@@ -21,6 +23,8 @@ const BaseLayout = () => {
         <Route path="/chart" exact element={<Chart />} />
         <Route path="/chart/:kind" exact element={<Chart />} />
         <Route path="/loading" exact element={<Loading />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/oauth" exact element={<RedirectURI />} />
         <Route path="*" exact element={<NotFound />} />
       </Routes>
     </BrowserRouter>
